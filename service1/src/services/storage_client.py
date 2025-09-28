@@ -22,6 +22,10 @@ def _storage_log_url() -> str:
     return f"{_storage_base_url()}/log"
 
 
+def _storage_cleanup_url() -> str:
+    return f"{_storage_base_url()}/cleanup"
+
+
 async def post_log_record(record: str, client: Optional[httpx.AsyncClient] = None) -> None:
     if client is None:
         async with httpx.AsyncClient() as standalone_client:
@@ -51,3 +55,13 @@ async def fetch_storage_logs() -> str:
         response = await client.get(_storage_log_url(), timeout=10.0)
         response.raise_for_status()
         return response.text
+
+
+async def trigger_storage_cleanup(client: Optional[httpx.AsyncClient] = None) -> None:
+    if client is None:
+        async with httpx.AsyncClient() as standalone_client:
+            await trigger_storage_cleanup(client=standalone_client)
+            return
+
+    response = await client.post(_storage_cleanup_url(), timeout=10.0)
+    response.raise_for_status()

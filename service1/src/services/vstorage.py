@@ -22,16 +22,29 @@ def _resolve_target_path() -> str:
     return path
 
 
-def append_to_vstorage(line: str) -> None:
-    path = _resolve_target_path()
+def _ensure_parent_directory(path: str) -> None:
     directory = os.path.dirname(path)
-
     if directory:
         os.makedirs(directory, exist_ok=True)
+
+
+def append_to_vstorage(line: str) -> None:
+    path = _resolve_target_path()
+    _ensure_parent_directory(path)
 
     data = line.rstrip("\n") + "\n"
 
     with open(path, "a", encoding="utf-8") as handle:
         handle.write(data)
+        handle.flush()
+        os.fsync(handle.fileno())
+
+
+def clear_vstorage() -> None:
+    path = _resolve_target_path()
+    _ensure_parent_directory(path)
+
+    with open(path, "w", encoding="utf-8") as handle:
+        handle.truncate(0)
         handle.flush()
         os.fsync(handle.fileno())
