@@ -17,3 +17,32 @@ services:
     networks:
       - private
     
+  
+  service1:
+    build: ./service1
+    environment:
+      - VSTORAGE_PATH=/data/vstorage
+      - STORAGE_URL=http://storage:8080
+    volumes:
+      - ./vstorage:/data/vstorage
+    ports:
+      - "8199:8199"
+    networks:
+      - private
+      - public
+    depends_on:
+      - storage
+      - service2
+
+  service2:
+    build: ./service2
+    environment:
+      - VSTORAGE_PATH=/data/vstorage
+      - STORAGE_URL=http://storage:8080
+    volumes:
+      - ./vstorage:/data/vstorage
+    networks:
+      - private
+    depends_on:
+      - storage
+    
