@@ -1,4 +1,11 @@
 
+networks:
+  public:
+    driver: bridge
+  private:
+    driver: bridge
+    internal: true
+
 volumes:
   storage_data:
 
@@ -7,4 +14,6 @@ services:
     build: ./storage
     volumes:
       - storage_data:/var/storage
+    networks:
+      - private
     
