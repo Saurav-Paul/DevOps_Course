@@ -1,0 +1,10 @@
+
+volumes:
+  storage_data:
+
+services:
+  storage:
+    build: ./storage
+    volumes:
+      - storage_data:/var/storage
+    
