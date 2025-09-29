@@ -1,0 +1,13 @@
+The used of LLM Tools/ Motivation of using LLM
+- I am already familiar with Docker and FastAPI because of my work, but I am a bit new to Node.js (Express.js). I thought this would be a great learning opportunity to use Node.js for the services. While implementing the services, I used an LLM for learning and whenever I got stuck. Also, since my VSCode has Copilot code suggestions, I used code autocompletion whenever it seemed correct to speed up development.
+
+I used an LLM to fix grammar and produce proper text in my documentation. Regarding Docker, I used LLM to research network isolation, volume creation and some debugging.
+
+How and Why LLM Helped
+- While developing, I was sometimes stuck generating logs, and the LLM helped fix these bugs. I feel that asking the LLM about issues is much faster than going through the documentation. Overall, the LLM was very helpful in achieving the goal of this exercise. I learned a lot from it.
+
+What kind of mistakes LLM did
+- Overall, the LLM was helpful, but I encountered some issues with writing to vstorage. I tried to fix it using the LLM, but unfortunately, it couldn't provide a correct solution. However, after some manual adjustments, I was able to resolve the issue.
+
+What were things that LLM was not able to provide
+- It wasn't able to provide me with very specific bugs, but overall, in general cases, it was really helpful. Maybe my prompting wasn't proper, which is why it failed.
