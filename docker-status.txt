@@ -1,0 +1,13 @@
+-> docker container ls
+CONTAINER ID   IMAGE                                             COMMAND                  CREATED         STATUS         PORTS                                         NAMES
+d9d6c8ddaf75   basics_of_containers_and_microservices-service1   "uvicorn src.main:ap…"   2 minutes ago   Up 2 minutes   0.0.0.0:8199->8199/tcp, [::]:8199->8199/tcp   basics_of_containers_and_microservices-service1-1
+c2e04f3f13b4   basics_of_containers_and_microservices-service2   "docker-entrypoint.s…"   2 minutes ago   Up 2 minutes                                                 basics_of_containers_and_microservices-service2-1
+3a08dc3163ca   basics_of_containers_and_microservices-storage    "docker-entrypoint.s…"   2 minutes ago   Up 2 minutes                                                 basics_of_containers_and_microservices-storage-1
+
+-> docker network ls
+NETWORK ID     NAME                                             DRIVER    SCOPE
+7f85132f8f52   basics_of_containers_and_microservices_private   bridge    local
+b0bdbd74334c   basics_of_containers_and_microservices_public    bridge    local
+d2ee6efa6caa   bridge                                           bridge    local
+de4a41def363   host                                             host      local
+364f937a0d6f   none                                             null      local
