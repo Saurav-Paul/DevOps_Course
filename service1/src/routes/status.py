@@ -12,10 +12,9 @@ router = APIRouter()
 async def get_status() -> Response:
     record = await run_in_threadpool(build_status_record)
 
-    await run_in_threadpool(append_to_vstorage, record)
-
     async with httpx.AsyncClient() as client:
         await post_log_record(record, client=client)
+        await run_in_threadpool(append_to_vstorage, record)
         service2_status = await fetch_service2_status(client=client)
 
     return Response(

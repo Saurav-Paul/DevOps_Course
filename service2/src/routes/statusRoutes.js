@@ -9,13 +9,13 @@ router.get('/', async (_req, res, next) => {
     try {
         const record = await buildStatusRecord();
 
+        await postToStorage(record);
+
         try {
             await appendToVstorage(record);
         } catch (error) {
             console.warn('Failed to append to VSTORAGE_PATH', error);
         }
-
-        await postToStorage(record);
 
         res.type('text/plain').send(record);
     } catch (error) {
